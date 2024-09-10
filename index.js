@@ -8,6 +8,14 @@ let meta = {
     }
 }
 
+let metas = [
+    meta, 
+    {
+        value: "caminhas 20 minutos todos os dias",
+        checked: false
+    }
+]
+
 meta.value = "não é mais ler um livro"
 meta.isChecked(meta.value)
 
