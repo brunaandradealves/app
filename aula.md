@@ -68,4 +68,4 @@ Aprensentar os dados
 
 ## Programação assíncrona e Promises
 
-- [x] 
+- [x] Uso de funções assíncronas (async/await)
