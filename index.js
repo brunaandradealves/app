@@ -25,7 +25,21 @@ const cadastrarMeta = async () => {
         while(true){
             
             const opcao = await select({
-
+                message: "Menu >", // mensagem inicial, assim que o codigo rodar
+                choices: [ // array de opções que podem ser acessadas pelo usuario
+                    {
+                        name: "Cadastrar meta", // nome da opção 1
+                        value: "cadastrar" // valor da opção 1
+                    },
+                    {
+                        name: "Listar metas", // nome da opção 2
+                        value: "listar" // valor da opção 2
+                    },
+                    {
+                        name: "Sair", // nome da opção 3
+                        value: "sair" // valor da opção 
+                    }
+                ]
             })
 
             switch(opcao) {
