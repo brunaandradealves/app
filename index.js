@@ -3,6 +3,8 @@
 const start = async () => {
 
     while(true){
+        
+        // await é para aguardar o usuário fazer alguma solicitação (promessa), exemplo uber: você solicita um carro e ele 'promete' que vai voltar com uma resposta, seja ela se encontrou um carro ou não.
 
         const opcao = await select({
             message: "Menu >",
