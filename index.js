@@ -1,41 +1,46 @@
- const { select } = require ('@inquirer/prompts')
+const { select, input } = require('@inquirer/prompts')
 
-const start = async () => {
-
-    while(true){
-        
-        // await (programa para) é para aguardar o usuário fazer alguma solicitação (promessa), exemplo uber: você solicita um carro e ele 'promete' que vai voltar com uma resposta, seja ela se encontrou um carro ou não.
-
-        const opcao = await select({
-            message: "Menu >",
-            choices: [
-                {
-                    name: "Cadastrar meta",
-                    value: "cadastrar"
-                },
-                {
-                    name: "Listar metas",
-                    value: "listar"
-                },
-                {
-                    name: "Sair",
-                    value: "sair"
-                }
-            ]
-        })
-        
-        switch(opcao) {
-            case "cadastrar":
-                console.log("Vamos cadastrar")
-                break
-            case "listar":
-                console.log("Vamos listar")
-                break
-            case "sair":
-                console.log("Até mais")
-                return
-        }
-    }
+let meta = {
+    value: 'Tomar 3L de água por dia',
+    checked: false,
 }
 
-start()
+let metas = [ meta ]
+
+const cadastrarMeta = async () => {
+    const meta = await input({ message: "Digite a meta: "})
+
+    if(meta.length == 0) {
+        console.log('A meta não pode ser vazia.')
+        return
+    }
+
+    metas.push(
+        { value: meta, checked: false }
+    )
+}
+
+    const start = async () => {
+
+        while(true){
+            
+            const opcao = await select({
+
+            })
+
+            switch(opcao) {
+                case "cadastrar":
+                    await cadastrarMeta()
+                    console.log(metas)
+                    break
+                case "listar":
+                    console.log("vamos listar")
+                    break
+                case "sair":
+                    console.log("Até a próxima!")
+                    return
+            }
+        }
+    }
+
+    start ()
