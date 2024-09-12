@@ -58,8 +58,24 @@ const metasRealizadas = async () => {
     }
 
     await select({
-        message: "Metas Realizadas",
+        message: "Metas Realizadas " + realizadas.length,
         choices: [...realizadas]
+    })
+}
+
+const metasAbertas = async () => {
+    const abertas = metas.filter((meta) => {
+        return meta.checked != true 
+    })
+
+    if(abertas.length == 0) {
+        console.log('Não existem metas abertas!')
+        return
+    }
+
+    await select({
+        message: "Metas Abertas " + abertas.length,
+        choices: [...abertas]
     })
 }
 
@@ -68,23 +84,27 @@ const metasRealizadas = async () => {
         while(true){
             
             const opcao = await select({
-                message: "Menu >", // mensagem inicial, assim que o codigo rodar
-                choices: [ // array de opções que podem ser acessadas pelo usuario
+                message: "Menu >", 
+                choices: [
                     {
-                        name: "Cadastrar meta", // nome da opção 1
-                        value: "cadastrar" // valor da opção 1
+                        name: "Cadastrar meta", 
+                        value: "cadastrar" 
                     },
                     {
-                        name: "Listar metas", // nome da opção 2
-                        value: "listar" // valor da opção 2
+                        name: "Listar metas",
+                        value: "listar"
                     },
                     {
                         name: "Metas realizadas",
                         value: "realizadas"
                     },
                     {
-                        name: "Sair", // nome da opção 3
-                        value: "sair" // valor da opção 
+                        name: "Metas abertas",
+                        value: "abertas"
+                    },
+                    {
+                        name: "Sair",
+                        value: "sair"
                     }
                 ]
             })
@@ -99,6 +119,10 @@ const metasRealizadas = async () => {
                     break
                 case "realizadas":
                     await metasRealizadas()
+                    break
+                case "abertas":
+                    await metasAbertas()
+                    break
                 case "sair":
                     console.log("Até a próxima!")
                     return
