@@ -1,0 +1,14 @@
+[
+  {
+    "value": "Treinar",
+    "checked": true
+  },
+  {
+    "value": "Jogar",
+    "checked": true
+  },
+  {
+    "value": "Estudar",
+    "checked": true
+  }
+]
